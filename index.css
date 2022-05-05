@@ -157,24 +157,34 @@ cualquier elemento hijo ( * ) QUE NO ES (:not) el PRIMER HIJO (:first-child) haz
 }
 /* Reconstrujendo en grid la class de .container */
 .grid-container {
-  border: 5px solid limegreen;
+  text-align: center;
   display: grid;
+  place-items: center;
+  padding-inline: 1rem;
+}
+
+.grid-container * {
+  max-width: 50ch;
 }
 
 @media (min-width: 45em) {
   .grid-container {
+    text-align: left;
     column-gap: var(--container-gap, 2rem);
-    grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(2rem, 1fr);
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 40rem)) minmax(1rem, 1fr);
   }
 
-  .grid-container > *:first-child {
+  .grid-container > *:first-child { 
     grid-column: 2;
-    outline: 1px solid red;
   }
   
   .grid-container > *:last-child {
     grid-column: 3;
-    outline: 1px solid yellow;
+  }
+
+  .grid-container--home {
+    padding-bottom: max(6rem, 20vh);
+    align-items: end;
   }
 }
 
@@ -249,6 +259,7 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
 /* -------------------------------------------------------------------- */
 
 .large-button {
+  font-size: 2rem;
   position: relative;
   display: inline-grid;
   z-index: 1;
@@ -357,4 +368,33 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   background-color: hsl( var(--clr-white) / 1);
   color: hsl( var(--clr-dark) / 1);
   border-color: hsl( var(--clr-white) / 1);
+}
+
+
+/* -------------------------------------------------------------------- */
+/*        IMAGENES DE FONDO ESPECIFICAS POR PAGINA                      */
+/* -------------------------------------------------------------------- */
+
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+
+/* Home page */
+
+.home {
+  background-image: url(./assets/home/background-home-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+  .home {
+    background-position: center center;
+    background-image: url(./assets/home/background-home-tablet.jpg);
+  }
+}
+
+@media (min-width: 45rem) {
+  .home {
+    background-image: url(./assets/home/background-home-desktop.jpg);
+  }
 }
