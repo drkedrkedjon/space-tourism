@@ -289,12 +289,31 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
 }
 
 .primary-navigation {
-  --gap: 8rem; /* Aqui declaro una variable solamente para esta clase. Se usa en el .flex */
   --underline-gap: 2rem; /* Aqui declaro una variable solamente para esta clase */
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
+@media (max-width: 35rem) {
+  .primary-navigation {
+    --underline-gap: .5rem; /* Aqui declaro una variable solamente para esta clase */
+    position: fixed;
+    z-index: 1000;
+    inset: 0 0 0 30%;
+    background: black;
+    list-style: none;
+    padding: min(10rem, 15%) 2rem;
+    margin: 0;
+    flex-direction: column;
+  }
+
+  .primary-navigation.underline-indicators > .active {
+    border: 0;
+  }
+
+}
+
 
 .primary-navigation a {
   text-decoration: none;
@@ -312,7 +331,7 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
 }
 
-.underline-indicators > li:hover,
+.underline-indicators > li:hover, /* Acuerdate que en safari no vale *:hover */
 .underline-indicators > li:focus,
 .underline-indicators > button:hover,
 .underline-indicators > button:focus {
