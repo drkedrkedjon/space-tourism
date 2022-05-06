@@ -95,6 +95,7 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: min-content 1fr;
+  overflow-x: hidden;
 }
 
 /* Para trabajar mas facil con las imagenes */
@@ -293,6 +294,19 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   list-style: none;
   padding: 0;
   margin: 0;
+  background: hsl( var(--clr-dark) / .95); 
+}
+
+@supports ( backdrop-filter: blur(1.5rem) ) {
+  .primary-navigation {
+    /* Efecto blur transparente en background */
+    background: hsl( var(--clr-white) / .15); 
+    backdrop-filter: blur(1.5rem);
+  }
+}
+
+.mobile-nav-toggle {
+  display: none;
 }
 
 @media (max-width: 35rem) {
@@ -301,17 +315,30 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
     position: fixed;
     z-index: 1000;
     inset: 0 0 0 30%;
-    background: black;
-    list-style: none;
+    /* list-style: none; */
     padding: min(10rem, 15%) 2rem;
     margin: 0;
     flex-direction: column;
+    transform: translateX(100%);
   }
 
-  .primary-navigation.underline-indicators > .active {
+  .primary-navigation[data-visible="true"] {
+    transform: translateX(0);
+}
+
+  .mobile-nav-toggle {
+    display: block;
+    position: absolute;
+    z-index: 2000;
+    right: 1rem;
+    top: 2rem;
+    background: transparent;
+    background-image: url(./assets/shared/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    aspect-ratio: 1;
     border: 0;
   }
-
 }
 
 
@@ -331,17 +358,25 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
 }
 
-.underline-indicators > li:hover, /* Acuerdate que en safari no vale *:hover */
-.underline-indicators > li:focus,
-.underline-indicators > button:hover,
-.underline-indicators > button:focus {
-  border-bottom: .2rem solid hsl( var(--clr-white) / 0.5);
+.underline-indicators > *:focus {
+  /* Borde blanca para todos los elementos on focus */
+  border-color: hsl( var(--clr-white) / .5);
 }
 
-.underline-indicators > .active,
-.underline-indicators > [aria-selected="true"] {
-    color: hsl( var(--clr-white) / 1);
-    border-color: hsl( var(--clr-white) / 1); 
+@media (hover: hover) { /* Para navegadores con mouse (hover) */
+  /* Subrayado blanco para los navegadores con ratoncito (no es para moviles) */
+  .underline-indicators > *:hover{
+      border-color: hsl( var(--clr-white) / .5);
+  }
+}
+
+@media (min-width: 35rem) {
+  /* Esto es para NO MOVILES para que aparece linea subrayada bajo el menu active o area-selected */
+  .underline-indicators > .active,
+  .underline-indicators > [aria-selected="true"] {
+      color: hsl( var(--clr-white) / 1);
+      border-color: hsl( var(--clr-white) / 1); 
+  }
 }
 
 .tab-list {
