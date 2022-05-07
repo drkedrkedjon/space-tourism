@@ -289,20 +289,34 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   transform: scale(1.5);
 }
 
+/* Primary-header */
+
+.logo {
+  margin: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.primary-header {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .primary-navigation {
+  --gap: 1.5rem clamp(1.5rem, 5vw, 3.5rem);
   --underline-gap: 2rem; /* Aqui declaro una variable solamente para esta clase */
   list-style: none;
   padding: 0;
   margin: 0;
-  background: hsl( var(--clr-dark) / .95); 
+  background: hsl( var(--clr-white) / 0.05);
+  backdrop-filter: blur(1.5rem);
 }
 
-@supports ( backdrop-filter: blur(1.5rem) ) {
-  .primary-navigation {
-    /* Efecto blur transparente en background */
-    background: hsl( var(--clr-white) / .15); 
-    backdrop-filter: blur(1.5rem);
-  }
+.primary-navigation a {
+  text-decoration: none;
+}
+
+.primary-navigation a > span {
+  font-weight: 700;
+  margin-right: .5em;
 }
 
 .mobile-nav-toggle {
@@ -316,15 +330,16 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
     z-index: 1000;
     inset: 0 0 0 30%;
     /* list-style: none; */
-    padding: min(10rem, 15%) 2rem;
+    padding: min(20rem, 15vh) 2rem;
     margin: 0;
     flex-direction: column;
-    transform: translateX(100%);
+    transform: translateX(100%); 
+    transition: transform 500ms ease-in-out;
   }
 
   .primary-navigation[data-visible="true"] {
     transform: translateX(0);
-}
+  }
 
   .mobile-nav-toggle {
     display: block;
@@ -335,20 +350,53 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
     background: transparent;
     background-image: url(./assets/shared/icon-hamburger.svg);
     background-repeat: no-repeat;
+    background-position: center;
     width: 1.5rem;
     aspect-ratio: 1;
     border: 0;
   }
+
+  .mobile-nav-toggle[aria-expanded="true"] {
+    background-image: url(./assets/shared/icon-close.svg);
+  }
+
+  .mobile-nav-toggle:focus-visible {
+    outline: 5px solid white;
+    outline-offset: 5px;
+  }
 }
 
-
-.primary-navigation a {
-  text-decoration: none;
+@media (min-width: 35rem) {
+  .primary-navigation {
+    padding-inline: clamp(3rem, 7vw, 7rem);
+  }
 }
 
-.primary-navigation a > span {
-  font-weight: 700;
-  margin-right: .5em;
+@media (min-width: 35rem) and (max-width: 44.999rem) {
+  .primary-navigation a > span {
+    display: none;
+  }
+}  
+
+@media (min-width: 45rem) {
+  .primary-header::after {
+    content: '';
+    display: block;
+    position: relative;
+    height: 1px;
+    width: 100%;
+    margin-right: -2.5rem;
+    background: hsl( var(--clr-white) / .25);
+    order: 1;
+  }
+
+  nav {
+    order: 2;
+  }
+
+  .primary-navigation {
+    margin-block: 2rem;
+  }
 }
 
 .underline-indicators > * {
