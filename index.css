@@ -669,7 +669,7 @@ body {
   }
 
   .destination-meta {
-    --gap: min(6 vw, 6rem);
+    --gap: min(6vw, 6rem);
     justify-content: start;
   }
 
