@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap"
+    rel="stylesheet">
+  <title>Space Exploration</title>
+  <link rel="stylesheet" href="index.css">
+  <script defer src="navigation.js"></script>
+</head>
+<body class="home">
+  <header class="primary-header flex">
+    <div>
+      <img src="./assets/shared/logo.svg" alt="Logo" class="logo">
+    </div>
+    <button class="mobile-nav-toggle" aria-controls="navegacion-principal"><span class="sr-only" aria-expanded="false">Menu</span></button>
+    <nav>
+      <ul id="navegacion-principal" class="navegacion-principal indicador-subrayado flex" data-visible="false">
+        <li class="active"><a class="uppercase color-blanco espacio-letras-2 ff-sans-cond"
+            href="#"><span>00</span>Home</a></li>
+        <li><a class="uppercase color-blanco espacio-letras-2 ff-sans-cond" href="#"><span>01</span>Destination</a></li>
+        <li><a class="uppercase color-blanco espacio-letras-2 ff-sans-cond" href="#"><span>02</span>Crew</a></li>
+        <li><a class="uppercase color-blanco espacio-letras-2 ff-sans-cond" href="#"><span>03</span>Technology</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>
