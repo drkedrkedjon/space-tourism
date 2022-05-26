@@ -9,8 +9,8 @@
 
   /* font-sizes */
   /* clamp() en este caso sirve para establecer --fs-900 en la manera flexible dependiendo de la anchura de la ventana del navegador. El primer numero es tamaño minimo, el ultimo es el tamaño maximo. Y en el medio es la parte flexible */
-  /* --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem); */
-  --fs-900: 9.375rem;
+  --fs-900: clamp(6rem, 8vw + 1rem, 9.375rem);
+  /* --fs-900: 9.375rem; */
   --fs-800: 3.5rem;
   --fs-700: 1.5rem;
   --fs-600: 1rem;
@@ -140,6 +140,10 @@ select {
   gap: var(--gap, 1rem);
 }
 
+.d-block {
+  display: block;
+}
+
 .flow> :where(:not(:first-child)) {
   margin-top: var(--flow-espacio, 1rem);
 }
@@ -221,6 +225,7 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
 /* Boton enorme principal */
 
 .botton-principal {
+  font-size: 2rem;
   display: inline-grid;
   position: relative;
   place-items: center;
@@ -268,6 +273,7 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
   margin: 0;
   padding: 0;
   background-color: hsl(var(--color-blanco) / 0.05);
+  -webkit-backdrop-filter: blur(1.5rem);
   backdrop-filter: blur(1.5rem);
 }
 .navegacion-principal a {
@@ -423,4 +429,62 @@ font-weight: 700;
   color: hsl(var(--color-oscuro) / 1);
   background-color: hsl(var(--color-blanco) / 1);
   border-color: hsl( var(--color-blanco) / 1);
+}
+
+/* -------------------------------------------------------------------- */
+/*         IMAGENES DE FONDO                                            */
+/* -------------------------------------------------------------------- */
+
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+
+.home {
+  background-image: url(./assets/home/background-home-mobile.jpg);
+}
+@media (min-width: 36rem) {
+  .home {
+    background-image: url(./assets/home/background-home-tablet.jpg);
+  }
+}
+@media (min-width: 50rem) {
+  .home {
+    background-image: url(./assets/home/background-home-desktop.jpg);
+  }
+}
+
+/* -------------------------------------------------------------------- */
+/*         LAYOUTS                                                      */
+/* -------------------------------------------------------------------- */
+
+.grid-container {
+  display: grid;
+  place-items: center center;
+  text-align: center;
+  padding-inline: 1rem;
+  padding-bottom: 5rem;
+}
+
+.grid-container p:not([class]) {
+  max-width: 50ch;
+}
+
+
+@media (min-width: 50rem) {
+  .grid-container {
+    text-align: left;
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(1rem, 1fr);
+  }
+  .grid-container--home {
+    align-items: end;
+    padding-bottom: max(6rem, 20vh);
+  }
+  .grid-container--home > *:first-child {
+    grid-column: 2;
+  }
+  .grid-container--home > *:last-child {
+    grid-column: 3;
+  }
+
 }
