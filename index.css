@@ -25,7 +25,7 @@
   --ff-sans-normal: "Barlow", sans-serif;
 }
 
-@media (min-width: 36em) {
+@media (min-width: 36rem) {
   :root {
     --fs-800: 5rem;
     --fs-700: 2.5rem;
@@ -83,7 +83,7 @@ p {
 body {
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
-  color: hsl(var(--color-blanco));
+  color: hsl(var(--color-claro));
   background-color: hsl(var(--color-oscuro));
   line-height: 1.5;
   min-height: 100vh;
@@ -289,7 +289,7 @@ font-weight: 700;
   display: none;
 }
 
-@media (max-width: 36rem) {
+@media (max-width: 37em) {
   .navegacion-principal {
     flex-direction: column;
     position: fixed;
@@ -324,19 +324,19 @@ font-weight: 700;
   }
 }
 
-@media (min-width: 36rem) {
+@media (min-width: 37em) {
   .navegacion-principal {
     padding-inline: clamp(3rem, 9vw, 10rem);
   }
 }
 
-@media (min-width: 36rem) and (max-width: 49.9999rem) {
+@media (min-width: 37em) and (max-width: 49.9999rem) {
     .navegacion-principal a > span {
       display: none;
     }
 }
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
 
   .primary-header::after {
     content: '';
@@ -360,7 +360,7 @@ font-weight: 700;
 
 .indicador-subrayado > * {
   cursor: pointer;
-  padding: var(--espacio-subrayado, .50rem) 0;
+  padding: var(--espacio-subrayado, .50em) 0;
   border: 0;
   border-bottom: 0.3rem solid hsl(var(--color-blanco) / 0);
   background-color: transparent;
@@ -376,7 +376,7 @@ font-weight: 700;
   }
 }
 
-@media (min-width: 36rem) {
+@media (min-width: 37em) {
   .indicador-subrayado .active {
     border-color: hsl(var(--color-blanco) / 1);
   }
@@ -440,12 +440,12 @@ body {
 .home {
   background-image: url(./assets/home/background-home-mobile.jpg);
 }
-@media (min-width: 36rem) {
+@media (min-width: 37em) {
   .home {
     background-image: url(./assets/home/background-home-tablet.jpg);
   }
 }
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .home {
     background-image: url(./assets/home/background-home-desktop.jpg);
   }
@@ -454,12 +454,12 @@ body {
 .destination {
   background-image: url(./assets/destination/background-destination-mobile.jpg);
 }
-@media (min-width: 36rem) {
+@media (min-width: 37em) {
   .destination {
     background-image: url(./assets/destination/background-destination-tablet.jpg);
   }
 }
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .destination {
     background-image: url(./assets/destination/background-destination-desktop.jpg);
   }
@@ -483,7 +483,7 @@ body {
 
 /* Home page */
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .grid-container {
     text-align: left;
     grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 30rem)) minmax(1rem, 1fr);
@@ -530,6 +530,12 @@ body {
   grid-area: content;
 }
 
+.opacidad-off {
+  opacity: 0;
+  transition: opacity 250ms linear;
+}
+
+
 .destination-meta {
   flex-direction: column;
   margin-top: 2rem;
@@ -540,7 +546,7 @@ body {
   font-size: 1.75rem;
 }
 
-@media (min-width: 36rem) {
+@media (min-width: 37em) {
   .titulo-numerado {
     justify-self: start;
     margin-block: 2rem;
@@ -554,7 +560,7 @@ body {
   }
 }
 
-@media (min-width: 50rem) {
+@media (min-width: 50em) {
   .grid-container--destination {
     justify-items: start;
     align-content: start;
@@ -570,4 +576,56 @@ body {
     justify-content: start;
     --gap: min(4vw, 6rem);
   }
+}
+
+/* Crew page layout */
+
+.grid-container--crew {
+  --flow-space: 2rem;
+  grid-template-areas: 
+    'title'
+    'image'
+    'tabs'
+    'contenido';
+}
+.grid-container--crew > h1 {
+  grid-area: title;
+}
+.grid-container--crew > picture {
+  grid-area: image;
+  max-width: 60%;
+  border-bottom: 1px solid hsl( var(--color-claro) / 0.25);
+}
+.grid-container--crew > .nav-puntos {
+  grid-area: tabs;
+}
+.grid-container--crew > .crew-info {
+  grid-area: contenido;
+}
+.crew-info h2 {
+  color: hsl( var(--color-blanco) / 0.5);
+}
+@media (min-width: 37em) {
+  .grid-container--crew {
+    grid-template-areas: 
+      'title'
+      'contenido'
+      'tabs'
+      'image';
+  }
+}
+@media (min-width: 50em) {
+  .grid-container--crew {
+    grid-template-columns: minmax(1rem, 1fr)  minmax(0, 40rem)  minmax(0, 35rem)  minmax(1rem, 1fr);
+    justify-items: start;
+    grid-template-areas: 
+    '. title image .'
+    '. contenido image .'
+    '. tabs image .';
+  }
+  .grid-container--crew > picture {
+    max-width: 90%;
+    align-self: end;
+  }
+
 }

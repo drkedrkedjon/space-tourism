@@ -390,7 +390,7 @@ destinado para lectores de pantalla que usan los usuarios con problemas de vista
 
 .underline-indicators > * {
   cursor: pointer;
-  padding: var(--underline-gap, .50rem) 0; /* Aqui es donde utilizo la variable declarada en .primary-navigation, 1rem es el valor por defecto */
+  padding: var(--underline-gap, .50em) 0; /* Aqui es donde utilizo la variable declarada en .primary-navigation, 1rem es el valor por defecto */
   border: 0;
   border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
   background-color: transparent;
