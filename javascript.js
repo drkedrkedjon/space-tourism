@@ -5,7 +5,7 @@ const mobileNavToggle = document.querySelector('.mobile-nav-toggle')
 
 mobileNavToggle.addEventListener('click', () => {
   const visibilidad = navegacionPrincipal.getAttribute('data-visible')
-  if(visibilidad === 'false') {
+  if (visibilidad === 'false') {
     navegacionPrincipal.setAttribute('data-visible', true)
     mobileNavToggle.setAttribute('aria-expanded', true)
   } else {
@@ -55,7 +55,7 @@ function cambiarTab(e) {
 
   articulo.classList.add('opacidad-off')
   articuloImg.classList.add('opacidad-off')
-  
+
   function cambiarDestination() {
     articulo.innerHTML = `
       <h2 class="ff-serif fs-800 uppercase color-blanco">${contenidoSelecionado.name}</h2>
@@ -77,7 +77,7 @@ function cambiarTab(e) {
     `
     articulo.classList.remove('opacidad-off')
     articuloImg.classList.remove('opacidad-off')
-  } 
+  }
 
   function cambiarCrew() {
     articulo.innerHTML = `
@@ -93,30 +93,28 @@ function cambiarTab(e) {
     `
     articulo.classList.remove('opacidad-off')
     articuloImg.classList.remove('opacidad-off')
-  } 
+  }
 
   function cambiarTechnology() {
     articulo.innerHTML = `
-      <h2 class="ff-serif fs-800 uppercase color-blanco">${contenidoSelecionado.name}</h2>
+      <header class="flow flow--space-small">
+      <h2 class="fs-600 ff-serif uppercase">The terminology ...</h2>
+      <p class="fs-700 uppercase ff-serif color-blanco">${contenidoSelecionado.name}</p>
+      </header>
       <p>${contenidoSelecionado.description}</p>
-      <div class="destination-meta flex">
-      <div>
-      <h3 class="color-claro fs-200 uppercase">Avg.distance</h3>
-      <p class="ff-serif uppercase">${contenidoSelecionado.distance}</p>
-      </div>
-      <div>
-      <h3 class="color-claro fs-200 uppercase">Est. travel time</h3>
-      <p class="ff-serif uppercase">${contenidoSelecionado.travel}</p>
-      </div>
-      </div>
     `
     articuloImg.innerHTML = `
-      <source srcset="${contenidoSelecionado.images.webp}" type="image/webp">
-      <img src="${contenidoSelecionado.images.png}" alt="${contenidoSelecionado.name}">
+      <source
+        media="(orientation: landscape)"
+        srcset="${contenidoSelecionado.images.portrait}" type="image/jpeg">
+      <source
+        media="(orientation: portrait)"
+        srcset="${contenidoSelecionado.images.landscape}" type="image/jpeg">
+      <img src="${contenidoSelecionado.images.landscape}" alt="Launch Vehicle">
     `
     articulo.classList.remove('opacidad-off')
     articuloImg.classList.remove('opacidad-off')
-  } 
+  }
 }
 
 
