@@ -2,6 +2,7 @@
 
 Por Colin Powell.
 Diseño: Fronend Mentor
+scrimba.com
 
 Proyecto hecho conjuntamente con @catharygr
 
