@@ -2,7 +2,7 @@
 
 Por Colin Powell. 
 Diseño: Fronend Mentor. 
-scrimba.com. 
+scrimba.com.
 
 Proyecto hecho conjuntamente con @catharygr
 
